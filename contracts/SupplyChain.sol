@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.5.16 <0.9.0;
+pragma solidity >=0.6.0 <0.8.0;
 
 contract SupplyChain {
 
@@ -139,7 +139,7 @@ contract SupplyChain {
   //      sure the buyer is refunded any excess ether sent. 
   // 6. call the event associated with this function!
   function buyItem(uint sku) public payable forSale(sku) paidEnough(items[sku].price) checkValue(sku) {
-    items[sku].seller.transfer(msg.value);
+    items[sku].seller.transfer(items[sku].price);
 
     items[sku].buyer = payable(msg.sender);
 
